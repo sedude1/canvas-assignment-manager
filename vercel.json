@@ -1,7 +1,0 @@
-{
-  "functions": {
-    "api/canvas.js": {
-      "runtime": "nodejs@20.11.0"
-    }
-  }
-}
