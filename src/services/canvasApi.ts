@@ -4,7 +4,7 @@ export class CanvasApiService {
   private config: CanvasApiConfig;
   private useProxy: boolean;
 
-  constructor(config: CanvasApiConfig, useProxy: boolean = true) {
+  constructor(config: CanvasApiConfig, useProxy: boolean = false) {
     this.config = config;
     this.useProxy = useProxy;
   }
