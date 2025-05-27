@@ -1,9 +1,4 @@
 {
-  "functions": {
-    "api/canvas.js": {
-      "runtime": "nodejs"
-    }
-  },
   "rewrites": [
     {
       "source": "/api/canvas/(.*)",
