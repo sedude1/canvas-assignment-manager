@@ -32,7 +32,9 @@ export const ApiSetup: React.FC<ApiSetupProps> = ({ onConfigured }) => {
         has_submitted_submissions: false,
         workflow_state: "published" as const,
         isSelected: false,
-        courseName: "Advanced Mathematics"
+        courseName: "Advanced Mathematics",
+        isDueInClass: false,
+        isHidden: false
       },
       {
         id: 2,
@@ -46,7 +48,9 @@ export const ApiSetup: React.FC<ApiSetupProps> = ({ onConfigured }) => {
         has_submitted_submissions: false,
         workflow_state: "published" as const,
         isSelected: false,
-        courseName: "World History"
+        courseName: "World History",
+        isDueInClass: false,
+        isHidden: false
       },
       {
         id: 3,
@@ -60,7 +64,9 @@ export const ApiSetup: React.FC<ApiSetupProps> = ({ onConfigured }) => {
         has_submitted_submissions: false,
         workflow_state: "published" as const,
         isSelected: false,
-        courseName: "Chemistry 101"
+        courseName: "Chemistry 101",
+        isDueInClass: false,
+        isHidden: false
       },
       {
         id: 4,
@@ -74,7 +80,9 @@ export const ApiSetup: React.FC<ApiSetupProps> = ({ onConfigured }) => {
         has_submitted_submissions: false,
         workflow_state: "published" as const,
         isSelected: false,
-        courseName: "Computer Science"
+        courseName: "Computer Science",
+        isDueInClass: false,
+        isHidden: false
       }
     ];
     
@@ -140,7 +148,13 @@ export const ApiSetup: React.FC<ApiSetupProps> = ({ onConfigured }) => {
       onConfigured();
     } catch (error) {
       console.error('Error during submission:', error);
-      if (error instanceof Error && error.message.includes('fetch')) {
+      if (error instanceof Error && (
+        error.message.includes('CORS') || 
+        error.message.includes('fetch') ||
+        error.message.includes('NetworkError') ||
+        error.message.includes('Failed to fetch') ||
+        error.name === 'TypeError'
+      )) {
         setError('CORS Error: Canvas API calls are blocked by browser security. This is normal for web apps. Use Demo Mode to test the interface, or deploy this app to a server with proper CORS handling.');
       } else {
         setError(error instanceof Error ? error.message : 'Failed to connect to Canvas API');
