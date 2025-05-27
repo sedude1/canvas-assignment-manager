@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/canvas.js": {
+      "runtime": "nodejs18.x@18.17.0"
+    }
+  }
+}
